@@ -1,0 +1,105 @@
+<head>
+    <title>Register</title>
+    <style>
+        /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-top: 50px;
+}
+
+/* Form Styles */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Register Link Styles */
+a {
+    color: #4CAF50;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #45a049;
+}
+
+a:active {
+    color: #388e3c;
+}
+
+/* Error/Success Message Styles (if you have them in your form) */
+.message {
+    text-align: center;
+    font-size: 16px;
+    color: #d9534f;
+    margin-top: 10px;
+}
+
+.message.success {
+    color: #5bc0de;
+}
+
+    </style>
+</head>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.username.label }}<br>
+        {{ form.username() }}
+    </div>
+    <div>
+        {{ form.password.label }}<br>
+        {{ form.password() }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+<a href="{{ url_for('register') }}">Register</a>

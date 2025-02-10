@@ -1,0 +1,170 @@
+<head>
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+        button{
+            background-color: #4CAF50;
+            padding :10px 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        a {
+            color:white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome {
+            color: white;
+            font-size: 16px;
+        }
+
+        nav a {
+            font-size: 16px;
+            color: white;
+            margin-left: 20px;
+            background-color: #45a049;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        form input,
+        form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            color: black;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .completed td {
+            text-decoration: line-through;
+            color: #8c8c8c;
+        }
+
+        .completed td:last-child {
+            text-decoration: none;
+            color: black;
+        }
+
+        .urgent {
+            background-color: #e74c3c !important;
+            color: white;
+        }
+
+        .personal {
+            background-color: #3498db !important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <span class="welcome">Welcome, {{ username }}</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.title.label }} {{ form.title() }}
+        {{ form.category.label }} {{ form.category() }}
+        {{ form.submit() }}
+    </form>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr class="{% if task.status == 'Completed' %}completed{% elif task.category == 'Urgent' %}urgent{% elif task.category == 'Personal' %}personal{% endif %}">
+            <td>{{ task.title }}</td>
+            <td>{{ task.category }}</td>
+            <td>{{ task.status }}</td>
+            <td>
+                {% if task.status != 'Completed' %}
+                <button><a href="{{ url_for('complete_task', task_id=task.id) }}">Complete</a></button>
+                {% endif %}
+                <button><a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>

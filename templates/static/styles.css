@@ -1,0 +1,124 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-top: 20px;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar (Logout Link) */
+nav {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    text-align: right;
+}
+
+nav a {
+    font-size: 16px;
+    color: white;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    background-color: #45a049;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* Form Styles */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Task List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul li a {
+    color: #FF5722;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+ul li a:hover {
+    color: #e64a19;
+}
+
+/* Task Status Styles */
+.completed {
+    text-decoration: line-through;
+    color: #8c8c8c;
+}
+
+.pending {
+    color: #f39c12;
+}
+
+.urgent {
+    color: #e74c3c;
+}
